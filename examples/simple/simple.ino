@@ -1,8 +1,8 @@
 
 /*
 
-LEDsimple.h - simple library for LEDs
-inspired by LEDEffect by Harrison H. Jones https://github.com/harrisonhjones/LEDEffect
+  LEDsimple.h - simple library for LEDs
+  inspired by LEDEffect by Harrison H. Jones https://github.com/harrisonhjones/LEDEffect
 
 */
 
@@ -25,8 +25,8 @@ void loop()  {
       state = 1;
     }
     else if (state == 1) {
-      led1.blink(200);
-      led2.on();
+      led1.blink(200, 3);    // blink with counter; if counter set to zero blink until off()
+      led2.blink(150, 8);
       state = 2;
     }
     else if (state == 2) {
@@ -35,7 +35,7 @@ void loop()  {
       state = 3;
     }
     else {
-      led1.blinkOnce(200);
+      led1.blink(80);
       led2.on();
       state = 0;
     }
