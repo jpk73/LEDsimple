@@ -16,16 +16,16 @@ class LEDsimple {
     void update();
     void off();
     void on();
-    void blink(int ledDelay);
-    void blinkOnce(int ledDelay);
+    void blink(uint16_t stopwatch);
+    void blink(uint16_t stopwatch, uint16_t counter);
   private:
     int _pin;
-    unsigned char _state;
-    unsigned char _state_old;
-    unsigned char _state_flag;
-    unsigned char _ledState;  // 1 = off, 2 = on, 3 = blink, 4 = blinkOnce
-    int _ledDelay;            // in ms
-    unsigned long _time;
+    uint8_t _state;
+    uint8_t _state_old;
+    uint16_t _counter;
+    uint8_t _mode;        // 1 = off, 2 = on, 3 = blink, 4 = blink with counter
+    uint16_t _stopwatch;  // in ms
+    uint64_t _time;
 };
 
 #endif
