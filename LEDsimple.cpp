@@ -25,6 +25,11 @@ void LEDsimple::update() {
     }
     if (_state != _state_old) {
       digitalWrite(_pin, _state);
+#if defined (__arm__) && defined (CORE_TEENSY) // digitalWriteFast on teensy
+      digitalWriteFast(_pin, _state);
+#else
+      digitalWrite(_pin, _state);
+#endif
       _state_old = _state;
     }
   }
