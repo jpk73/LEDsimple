@@ -5,7 +5,7 @@
 LEDsimple::LEDsimple(int pin) {
   pinMode(pin, OUTPUT);
   _pin = pin;
-  _time = millis();
+  _time = 0;
   _state = 0;
   _state_old = 0;
   _counter = 0;
@@ -14,8 +14,8 @@ LEDsimple::LEDsimple(int pin) {
 }
 
 void LEDsimple::update() {
-  if ((millis() - _time) > _stopwatch) {
-    _time = millis();
+  if (_time > _stopwatch) {
+    _time = 0;
     if (_mode == 1) {_state = 0;}
     else if (_mode == 2) {_state = 1;}
     else if (_mode == 3) {_state = !_state;}
@@ -24,7 +24,6 @@ void LEDsimple::update() {
       else {if (_state) {_state = 0;} _stopwatch = 1000;}
     }
     if (_state != _state_old) {
-      digitalWrite(_pin, _state);
 #if defined (__arm__) && defined (CORE_TEENSY) // digitalWriteFast on teensy
       digitalWriteFast(_pin, _state);
 #else
@@ -38,24 +37,24 @@ void LEDsimple::update() {
 void LEDsimple::off() {
   _mode = 1;
   _stopwatch = 1000;
-  _time = 0;
+  _time = _stopwatch;
 }
 
 void LEDsimple::on() {
   _mode = 2;
   _stopwatch = 1000;
-  _time = 0;
+  _time = _stopwatch;
 }
 
 void LEDsimple::blink(uint16_t stopwatch) {
   _mode = 3;
   _stopwatch = stopwatch;
-  _time = stopwatch;
+  _time = _stopwatch;
 }
 
 void LEDsimple::blink(uint16_t stopwatch, uint16_t counter) {
   if (counter == 0) {_mode = 3;}
   else {_mode = 4; _counter = counter * 2;}
   _stopwatch = stopwatch;
-  _time = stopwatch;
+  _time = _stopwatch;
 }
