@@ -9,6 +9,7 @@ inspired by LEDEffect by Harrison H. Jones https://github.com/harrisonhjones/LED
 #include <Arduino.h>
 #ifndef LEDsimple_h
 #define LEDsimple_h
+#include "elapsedMillis.h"
 
 class LEDsimple {
   public:
@@ -25,7 +26,7 @@ class LEDsimple {
     uint16_t _counter;
     uint8_t _mode;        // 1 = off, 2 = on, 3 = blink, 4 = blink with counter
     uint16_t _stopwatch;  // in ms
-    uint64_t _time;
+    elapsedMillis _time;
 };
 
 #endif
