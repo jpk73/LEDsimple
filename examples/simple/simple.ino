@@ -31,7 +31,7 @@ void loop()  {
     }
     else if (state == 2) {
       led1.off();
-      led2.off();
+      led2.off(1000);        // off after delay
       state = 3;
     }
     else {
