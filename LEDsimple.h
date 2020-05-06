@@ -16,6 +16,7 @@ class LEDsimple {
     LEDsimple(int pin);
     void update();
     void off();
+    void off(uint16_t stopwatch);
     void on();
     void blink(uint16_t stopwatch);
     void blink(uint16_t stopwatch, uint16_t counter);
