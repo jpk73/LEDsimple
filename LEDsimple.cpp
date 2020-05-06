@@ -40,6 +40,12 @@ void LEDsimple::off() {
   _time = _stopwatch;
 }
 
+void LEDsimple::off(uint16_t stopwatch) {
+  _mode = 1;
+  _stopwatch = stopwatch;
+  _time = 0;
+}
+
 void LEDsimple::on() {
   _mode = 2;
   _stopwatch = 1000;
