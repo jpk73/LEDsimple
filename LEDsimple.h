@@ -16,17 +16,17 @@ class LEDsimple {
     LEDsimple(int pin);
     void update();
     void off();
-    void off(uint16_t stopwatch);
+    void off(int stopwatch);
     void on();
-    void blink(uint16_t stopwatch);
-    void blink(uint16_t stopwatch, uint16_t counter);
+    void blink(int stopwatch);
+    void blink(int stopwatch, int counter);
   private:
     int _pin;
-    uint8_t _state;
-    uint8_t _state_old;
-    uint16_t _counter;
-    uint8_t _mode;        // 1 = off, 2 = on, 3 = blink, 4 = blink with counter
-    uint16_t _stopwatch;  // in ms
+    int _state;
+    int _state_old;
+    int _counter;
+    int _mode;        // 1 = off, 2 = on, 3 = blink, 4 = blink with counter
+    int _stopwatch;  // in ms
     elapsedMillis _time;
 };
 
