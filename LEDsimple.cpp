@@ -40,7 +40,7 @@ void LEDsimple::off() {
   _time = _stopwatch;
 }
 
-void LEDsimple::off(uint16_t stopwatch) {
+void LEDsimple::off(int stopwatch) {
   _mode = 1;
   _stopwatch = stopwatch;
   _time = 0;
@@ -52,13 +52,13 @@ void LEDsimple::on() {
   _time = _stopwatch;
 }
 
-void LEDsimple::blink(uint16_t stopwatch) {
+void LEDsimple::blink(int stopwatch) {
   _mode = 3;
   _stopwatch = stopwatch;
   _time = _stopwatch;
 }
 
-void LEDsimple::blink(uint16_t stopwatch, uint16_t counter) {
+void LEDsimple::blink(int stopwatch, int counter) {
   if (counter == 0) {_mode = 3;}
   else {_mode = 4; _counter = counter * 2;}
   _stopwatch = stopwatch;
