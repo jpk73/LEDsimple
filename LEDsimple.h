@@ -26,7 +26,7 @@ class LEDsimple {
     int _state_old;
     int _counter;
     int _mode;        // 1 = off, 2 = on, 3 = blink, 4 = blink with counter
-    int _stopwatch;  // in ms
+    uint32_t _stopwatch;  // in ms
     elapsedMillis _time;
 };
 
