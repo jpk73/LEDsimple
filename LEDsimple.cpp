@@ -23,6 +23,9 @@ void LEDsimple::update() {
       if (_counter > 0) {_counter--; _state = !_state;}
       else {if (_state) {_state = 0;} _stopwatch = 1000;}
     }
+    else if (_mode == 5) {
+      if (_counter > 0) {_counter--; _state = !_state;}
+    }
     if (_state != _state_old) {
 #if defined (__arm__) && defined (CORE_TEENSY) // digitalWriteFast on teensy
       digitalWriteFast(_pin, _state);
@@ -63,4 +66,12 @@ void LEDsimple::blink(int stopwatch, int counter) {
   else {_mode = 4; _counter = counter * 2;}
   _stopwatch = stopwatch;
   _time = _stopwatch;
+}
+
+void LEDsimple::pulse(int stopwatch, int counter) {
+  if (counter != 0) {
+  _mode = 5; _counter = counter * 2;
+  _stopwatch = stopwatch;
+  _time = _stopwatch;
+  }
 }
